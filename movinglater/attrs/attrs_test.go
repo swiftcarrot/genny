@@ -16,6 +16,7 @@ func Test_Attr_GoType(t *testing.T) {
 		{"datetime", "time.Time"},
 		{"date", "time.Time"},
 		{"time", "time.Time"},
+		{"text", "string"},
 	}
 
 	for _, test := range tt {
@@ -23,6 +24,25 @@ func Test_Attr_GoType(t *testing.T) {
 			r := require.New(st)
 			a := Attr{commonType: test.ct}
 			r.Equal(test.gt, a.GoType())
+		})
+	}
+
+}
+func Test_Attr_CommonType(t *testing.T) {
+
+	tt := []struct {
+		ct string
+		gt string
+	}{
+		{"timestamp", "timestamp"},
+		{"timestamp", "timestamp"},
+	}
+
+	for _, test := range tt {
+		t.Run(test.ct+"/"+test.gt, func(st *testing.T) {
+			r := require.New(st)
+			a := Attr{commonType: test.ct}
+			r.Equal(test.gt, a.CommonType())
 		})
 	}
 

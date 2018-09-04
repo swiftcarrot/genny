@@ -18,6 +18,8 @@ func (a Attr) GoType() string {
 		return a.goType
 	}
 	switch a.commonType {
+	case "text":
+		return "string"
 	case "timestamp", "datetime", "date", "time":
 		return "time.Time"
 	}

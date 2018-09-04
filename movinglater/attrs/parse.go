@@ -19,12 +19,22 @@ func Parse(arg string) (Attr, error) {
 
 	parts := strings.Split(arg, ":")
 	attr.Name = name.New(parts[0])
+
+	var err error
+	var ct string
 	if len(parts) > 1 {
-		attr.commonType = parts[1]
+		ct = parts[1]
+	}
+	if attr.commonType, err = UnknownToCommon(ct); err != nil {
+		return attr, errors.WithStack(err)
 	}
 
+	var gt string
 	if len(parts) > 2 {
-		attr.goType = parts[2]
+		gt = parts[2]
+	}
+	if attr.goType, err = CommonToGo(gt); err != nil {
+		return attr, errors.WithStack(err)
 	}
 
 	return attr, nil
