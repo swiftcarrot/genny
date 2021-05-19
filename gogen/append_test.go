@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gobuffalo/genny/v2"
 	"github.com/stretchr/testify/require"
+	"github.com/swiftcarrot/genny"
 )
 
 func Test_Append(t *testing.T) {

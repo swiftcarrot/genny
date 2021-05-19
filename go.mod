@@ -1,6 +1,6 @@
-module github.com/gobuffalo/genny/v2
+module github.com/swiftcarrot/genny
 
-go 1.13
+go 1.16
 
 require (
 	github.com/gobuffalo/logger v1.0.3
